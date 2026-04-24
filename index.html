@@ -119,6 +119,10 @@
 </head>
 <body>
 
+<audio id="bg-music" loop>
+    <source src="https://mp3tourl.com/audio/1777041400687-17f316ac-65f5-44b6-ab85-36a8c46f298f.m4a" type="audio/mp4">
+</audio>
+
 <div class="container">
     <header>
         <span class="protocol-label">GABRIEL SWIFT</span>
@@ -155,7 +159,6 @@
 <script>
     const database = {
         IPA: [
-            // Atom & Materi
             { q: "Seorang siswa mengamati atom dengan 11 proton. Berdasarkan jumlah proton tersebut, atom tersebut termasuk...", opts: ["Natrium", "Magnesium", "Kalium", "Oksigen"], correct: "Natrium", ex: "Nomor atom 11 adalah Natrium (Na)." },
             { q: "Dalam percobaan, suatu zat dipanaskan dan berubah warna serta menghasilkan gas. Perubahan tersebut termasuk...", opts: ["Perubahan Kimia", "Perubahan Fisika", "Perubahan Wujud", "Perubahan Mekanik"], correct: "Perubahan Kimia", ex: "Munculnya gas dan perubahan warna indikasi terbentuknya zat baru." },
             { q: "Air laut mengandung garam dan air. Campuran ini disebut...", opts: ["Campuran Homogen", "Campuran Heterogen", "Unsur", "Senyawa"], correct: "Campuran Homogen", ex: "Larutan garam menyatu sempurna sehingga tidak terlihat batasnya." },
@@ -166,8 +169,6 @@
             { q: "Seorang siswa menemukan zat yang tidak dapat diuraikan lagi secara kimia. Zat tersebut adalah...", opts: ["Unsur", "Senyawa", "Campuran", "Molekul"], correct: "Unsur", ex: "Unsur adalah bentuk paling sederhana dari materi." },
             { q: "Garam dapur merupakan contoh...", opts: ["Senyawa", "Unsur", "Campuran Heterogen", "Logam"], correct: "Senyawa", ex: "Garam ($NaCl$) terdiri dari unsur Natrium dan Klorin." },
             { q: "Dalam kehidupan sehari-hari, udara termasuk...", opts: ["Campuran", "Senyawa", "Unsur Murni", "Zat Padat"], correct: "Campuran", ex: "Udara terdiri dari Nitrogen, Oksigen, dan gas lainnya." },
-            
-            // Listrik
             { q: "Andi memasang lampu di rumahnya. Ia ingin jika satu lampu mati, lampu lain tetap menyala. Maka ia harus menggunakan rangkaian...", opts: ["Paralel", "Seri", "Campuran", "Tunggal"], correct: "Paralel", ex: "Rangkaian paralel memiliki percabangan jalur listrik." },
             { q: "Sebuah rangkaian memiliki hambatan yang sangat besar. Akibatnya arus listrik akan...", opts: ["Mengecil", "Membesar", "Tetap", "Berhenti total"], correct: "Mengecil", ex: "Hambatan (R) berbanding terbalik dengan kuat arus (I)." },
             { q: "Budi menyentuh kabel terbuka dan merasakan sengatan. Hal ini terjadi karena adanya...", opts: ["Aliran elektron", "Medan magnet", "Gaya gravitasi", "Suhu panas"], correct: "Aliran elektron", ex: "Sengatan listrik adalah akibat arus (elektron) yang melewati tubuh." },
@@ -178,8 +179,6 @@
             { q: "Jika hambatan pada rangkaian dibuat sangat kecil, maka arus listrik akan...", opts: ["Sangat besar", "Sangat kecil", "Nol", "Tetap"], correct: "Sangat besar", ex: "I = V/R, pembagi kecil menghasilkan hasil besar." },
             { q: "Energi listrik diubah menjadi energi cahaya pada perangkat...", opts: ["Lampu LED", "Seterika", "Kipas Angin", "Speaker"], correct: "Lampu LED", ex: "LED mengubah elektron menjadi foton cahaya." },
             { q: "Dalam kehidupan sehari-hari, listrik digunakan untuk...", opts: ["Sumber energi peralatan", "Membuat makanan", "Mendinginkan air laut", "Mengatur gravitasi"], correct: "Sumber energi peralatan", ex: "Energi listrik diubah menjadi energi gerak, panas, atau cahaya." },
-            
-            // Genetika
             { q: "Seorang petani menyilangkan tanaman tinggi (T) dengan pendek (t). Semua anaknya tinggi. Hal ini menunjukkan bahwa sifat tinggi bersifat...", opts: ["Dominan", "Resesif", "Intermediet", "Mutasi"], correct: "Dominan", ex: "Sifat dominan menutupi penampakan sifat resesif." },
             { q: "Dalam persilangan Aa × Aa, kemungkinan genotipe anak yang muncul adalah...", opts: ["AA, Aa, aa", "Hanya Aa", "AA dan aa saja", "Semua AA"], correct: "AA, Aa, aa", ex: "Rasio genotipe 1:2:1." },
             { q: "Sifat yang tertutupi oleh sifat lain dalam genetika disebut...", opts: ["Resesif", "Dominan", "Fenotipe", "Hibrid"], correct: "Resesif", ex: "Hanya muncul jika dalam keadaan homozigot." },
@@ -190,8 +189,6 @@
             { q: "Genotipe adalah...", opts: ["Susunan genetik individu", "Warna rambut", "Tinggi badan", "Cara bicara"], correct: "Susunan genetik individu", ex: "Dilambangkan dengan huruf seperti AA atau Aa." },
             { q: "Persilangan dihibrid heterozigot sempurna menghasilkan rasio fenotipe...", opts: ["9 : 3 : 3 : 1", "3 : 1", "1 : 2 : 1", "1 : 1"], correct: "9 : 3 : 3 : 1", ex: "Hukum Mendel II (Asortasi bebas)." },
             { q: "Sifat dominan biasanya dilambangkan dengan...", opts: ["Huruf Kapital", "Huruf Kecil", "Angka", "Simbol Yunani"], correct: "Huruf Kapital", ex: "Contoh: 'T' untuk tinggi." },
-
-            // Ekosistem
             { q: "Dalam sebuah padang rumput, rumput dimakan kambing lalu dimakan harimau. Rumput berperan sebagai...", opts: ["Produsen", "Konsumen I", "Konsumen II", "Pengurai"], correct: "Produsen", ex: "Tumbuhan menghasilkan energi sendiri melalui fotosintesis." },
             { q: "Jika jumlah predator dalam suatu wilayah berkurang drastis, maka jumlah mangsa akan...", opts: ["Meningkat pesat", "Menurun", "Tetap", "Punah"], correct: "Meningkat pesat", ex: "Tidak ada yang mengontrol populasi mangsa." },
             { q: "Bakteri dan jamur dalam tanah berfungsi sebagai...", opts: ["Pengurai (Dekomposer)", "Produsen", "Karnivora", "Parasit"], correct: "Pengurai (Dekomposer)", ex: "Menguraikan materi organik kembali ke tanah." },
@@ -202,9 +199,7 @@
             { q: "Konsumen tingkat dua adalah hewan yang memakan...", opts: ["Konsumen tingkat satu", "Produsen", "Pengurai", "Tumbuhan langsung"], correct: "Konsumen tingkat satu", ex: "Biasanya berupa hewan karnivora kecil atau omnivora." },
             { q: "Rantai makanan menunjukkan...", opts: ["Aliran energi", "Siklus air", "Pertumbuhan pohon", "Jumlah populasi"], correct: "Aliran energi", ex: "Menunjukkan perpindahan energi dari satu organisme ke organisme lain." },
             { q: "Ekosistem terdiri dari dua komponen utama, yaitu...", opts: ["Biotik dan Abiotik", "Hewan dan Tumbuhan", "Air dan Udara", "Tanah dan Batu"], correct: "Biotik dan Abiotik", ex: "Komponen makhluk hidup dan benda tak hidup." },
-
-            // Sistem Tubuh & Fisika
-            { q: "Seorang siswa berlari dan napasnya menjadi cepat. Hal ini terjadi karena tubuh membutuhkan lebih banyak...", opts: ["Oksigen", "Karbon Dioksida", "Nitrogen", "Cahaya"], correct: "Oksigen", ex: "Oksigen dibutuhkan untuk membakar energi (metabolisme)." },
+            { q: "Seorang siswa berlari dan napasnya menjadi cepat. Hal ini terjadi karena tubuh membutuhkan lebih banyak...", opts: ["Oksigen", "Karbon Diokusida", "Nitrogen", "Cahaya"], correct: "Oksigen", ex: "Oksigen dibutuhkan untuk membakar energi (metabolisme)." },
             { q: "Jantung pada manusia berfungsi untuk...", opts: ["Memompa darah", "Menyaring udara", "Mencerna lemak", "Menyimpan nutrisi"], correct: "Memompa darah", ex: "Menyebarkan oksigen dan nutrisi ke seluruh tubuh." },
             { q: "Proses pencernaan secara mekanik pada manusia dimulai dari...", opts: ["Mulut", "Lambung", "Usus Halus", "Kerongkongan"], correct: "Mulut", ex: "Gigi menghancurkan makanan secara mekanik." },
             { q: "Bunyi tidak dapat terdengar di ruang hampa udara karena...", opts: ["Tidak ada media rambat", "Suhunya terlalu dingin", "Terlalu gelap", "Gravitasi terlalu besar"], correct: "Tidak ada media rambat", ex: "Bunyi membutuhkan zat perantara (padat/cair/gas)." },
@@ -216,7 +211,6 @@
             { q: "Matahari merupakan sumber energi terbesar berupa...", opts: ["Panas dan Cahaya", "Bunyi dan Listrik", "Angin dan Air", "Kimia dan Nuklir"], correct: "Panas dan Cahaya", ex: "Radiasi matahari adalah penggerak kehidupan di Bumi." }
         ],
         MTK: [
-            // Koordinat
             { q: "Titik A(3, 4) dicerminkan terhadap sumbu X. Di mana posisi bayangannya?", opts: ["(3, -4)", "(-3, 4)", "(-3, -4)", "(4, 3)"], correct: "(3, -4)", ex: "Refleksi sumbu X mengubah tanda Y." },
             { q: "Seorang siswa menggambar titik (-2, 5). Jika dicerminkan ke sumbu Y, hasilnya...", opts: ["(2, 5)", "(-2, -5)", "(2, -1)", "(5, -2)"], correct: "(2, 5)", ex: "Refleksi sumbu Y mengubah tanda X." },
             { q: "Titik (2, 3) digeser (translasi) 3 ke kanan dan 2 ke atas. Koordinat baru adalah...", opts: ["(5, 5)", "(6, 5)", "(5, 1)", "(1, 1)"], correct: "(5, 5)", ex: "(2+3, 3+2) = (5, 5)." },
@@ -227,8 +221,6 @@
             { q: "Dalam transformasi geometri, translasi berarti...", opts: ["Pergeseran", "Pencerminan", "Perputaran", "Perkalian"], correct: "Pergeseran", ex: "Memindahkan posisi tanpa mengubah bentuk." },
             { q: "Rotasi berarti proses...", opts: ["Perputaran", "Pencerminan", "Penyusutan", "Pergeseran"], correct: "Perputaran", ex: "Memutar titik terhadap pusat tertentu." },
             { q: "Titik pusat koordinat Cartesius adalah...", opts: ["(0, 0)", "(1, 1)", "(0, 1)", "(1, 0)"], correct: "(0, 0)", ex: "Disebut juga titik asal." },
-
-            // Peluang
             { q: "Sebuah dadu dilempar satu kali. Peluang muncul angka 6 adalah...", opts: ["1/6", "1/2", "1/3", "1/4"], correct: "1/6", ex: "Ada satu angka 6 dari total 6 sisi dadu." },
             { q: "Peluang muncul bilangan genap pada pelemparan sebuah dadu adalah...", opts: ["1/2", "1/6", "1/3", "2/3"], correct: "1/2", ex: "Angka genap: {2, 4, 6}. 3/6 = 1/2." },
             { q: "Sebuah koin dilempar. Peluang muncul sisi Kepala adalah...", opts: ["1/2", "1", "1/4", "0"], correct: "1/2", ex: "Hanya ada 2 sisi: Kepala atau Angka." },
@@ -239,8 +231,6 @@
             { q: "Nilai peluang minimum (kejadian mustahil) adalah...", opts: ["0", "-1", "0.5", "1"], correct: "0", ex: "0 berarti tidak mungkin terjadi." },
             { q: "Jika peluang hujan hari ini adalah 1/4, maka peluang tidak hujan adalah...", opts: ["3/4", "1/4", "1/2", "1"], correct: "3/4", ex: "1 - 1/4 = 3/4." },
             { q: "Sebuah dadu dilempar dua kali. Peluang muncul angka 6 pada kedua lemparan adalah...", opts: ["1/36", "1/12", "1/6", "2/6"], correct: "1/36", ex: "1/6 * 1/6 = 1/36." },
-
-            // Aljabar
             { q: "Umur Andi 5 tahun lebih tua dari Budi. Jika umur Budi 10 tahun, berapa umur Andi?", opts: ["15 tahun", "5 tahun", "20 tahun", "10 tahun"], correct: "15 tahun", ex: "10 + 5 = 15." },
             { q: "Harga sebuah buku Rp5.000. Jika Andi membeli 3 buku, total harganya adalah...", opts: ["Rp15.000", "Rp10.000", "Rp8.000", "Rp5.300"], correct: "Rp15.000", ex: "3 x 5.000 = 15.000." },
             { q: "Jika $x + 7 = 15$, maka nilai x adalah...", opts: ["8", "7", "22", "15"], correct: "8", ex: "15 - 7 = 8." },
@@ -251,8 +241,6 @@
             { q: "Bentuk sederhana dari $2x + 3x$ adalah...", opts: ["$5x$", "$6x$", "$5x^2$", "$x$"], correct: "$5x$", ex: "Koefisien dijumlahkan karena variabel sama." },
             { q: "Variabel dalam aljabar adalah...", opts: ["Lambang pengganti bilangan", "Angka tetap", "Operasi hitung", "Hasil akhir"], correct: "Lambang pengganti bilangan", ex: "Biasanya huruf seperti x, y, z." },
             { q: "Konstanta dalam aljabar adalah...", opts: ["Bilangan tetap/angka saja", "Huruf", "Tanda tambah", "Pangkat"], correct: "Bilangan tetap/angka saja", ex: "Nilainya tidak berubah (tidak memiliki variabel)." },
-
-            // Bangun & Pythagoras
             { q: "Sebuah persegi memiliki sisi 5 cm. Luasnya adalah...", opts: ["25 $cm^2$", "20 $cm^2$", "10 $cm^2$", "50 $cm^2$"], correct: "25 $cm^2$", ex: "Sisi x Sisi = 25." },
             { q: "Keliling persegi dengan panjang sisi 4 cm adalah...", opts: ["16 cm", "8 cm", "4 cm", "12 cm"], correct: "16 cm", ex: "4 x Sisi = 16." },
             { q: "Volume kubus dengan panjang sisi 3 cm adalah...", opts: ["27 $cm^3$", "9 $cm^3$", "12 $cm^3$", "81 $cm^3$"], correct: "27 $cm^3$", ex: "Sisi x Sisi x Sisi = 27." },
@@ -263,8 +251,6 @@
             { q: "Keliling lingkaran dengan jari-jari r adalah...", opts: ["$2 \pi r$", "$\pi r^2$", "$2 \pi$", "$\pi d^2$"], correct: "$2 \pi r$", ex: "Atau $\pi d$." },
             { q: "Jari-jari lingkaran adalah...", opts: ["Setengah diameter", "Dua kali diameter", "Sama dengan diameter", "Keliling"], correct: "Setengah diameter", ex: "r = d/2." },
             { q: "Diameter lingkaran adalah...", opts: ["2 kali jari-jari", "Setengah jari-jari", "Akar jari-jari", "Jarak pusat"], correct: "2 kali jari-jari", ex: "d = 2r." },
-
-            // Lainnya
             { q: "Gradien garis yang miring ke kanan (naik) bernilai...", opts: ["Positif", "Negatif", "Nol", "Tak terhingga"], correct: "Positif", ex: "Nilai m > 0." },
             { q: "Gradien garis yang miring ke kiri (turun) bernilai...", opts: ["Negatif", "Positif", "Nol", "Satu"], correct: "Negatif", ex: "Nilai m < 0." },
             { q: "Dua garis dikatakan sejajar jika...", opts: ["Gradiennya sama", "Berpotongan", "Tegak lurus", "Hasil kali m = -1"], correct: "Gradiennya sama", ex: "$m_1 = m_2$." },
@@ -291,10 +277,18 @@
         return array;
     }
 
+    const bgMusic = document.getElementById('bg-music');
+    document.addEventListener('click', function() {
+        if (bgMusic.paused) {
+            bgMusic.play().catch(e => console.log("Audio play blocked"));
+        }
+    }, { once: false });
+
     function switchSubject(s) {
         curSub = s; curIdx = 0;
         document.getElementById('btn-ipa').classList.toggle('active', s === 'IPA');
         document.getElementById('btn-mtk').classList.toggle('active', s === 'MTK');
+        shuffle(database[curSub]);
         render();
     }
 
@@ -305,11 +299,11 @@
         document.getElementById('progress-val').innerText = `${curIdx + 1}/50`;
         document.getElementById('p-bar').style.width = `${((curIdx + 1) / 50) * 100}%`;
 
-        const shuffled = shuffle([...item.opts]);
+        const shuffledOptions = shuffle([...item.opts]);
         const container = document.getElementById('q-options');
         container.innerHTML = '';
         
-        shuffled.forEach(opt => {
+        shuffledOptions.forEach(opt => {
             const div = document.createElement('div');
             div.className = 'opt';
             div.innerHTML = opt;
@@ -348,8 +342,11 @@
         else { alert("MISI SELESAI. Semua protokol cerita telah dikuasai."); }
     }
 
-    window.onload = render;
+    window.onload = () => {
+        shuffle(database['IPA']);
+        shuffle(database['MTK']);
+        render();
+    };
 </script>
 </body>
 </html>
-
