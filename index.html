@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel Swift's Test</title>
+    <title>Test Academy</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -31,256 +31,196 @@
             color: var(--text-pure);
             margin: 0; padding: 0;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         .container { max-width: 850px; margin: 0 auto; padding: 20px; }
 
         header {
-            text-align: center; padding: 60px 0;
+            text-align: center; padding: 50px 0;
             border-bottom: 1px solid var(--glass-border);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .protocol-label {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem; letter-spacing: 5px;
             color: var(--neon-mtk); text-transform: uppercase;
-            margin-bottom: 15px; display: block;
-            opacity: 0.8;
+            margin-bottom: 10px; display: block;
         }
 
         .main-title {
-            font-family: 'Montserrat', sans-serif; font-size: 4rem;
-            margin: 0; line-height: 0.9; letter-spacing: -3px;
-            background: linear-gradient(to bottom, #ffffff 30%, #444444 100%);
+            font-family: 'Montserrat', sans-serif; font-size: 3.5rem;
+            margin: 0; line-height: 1; letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #444);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .dashboard {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 20px; margin-bottom: 40px;
+            gap: 15px; margin-bottom: 30px;
         }
 
         .stat-box {
             background: var(--bg-deep-card); border: 1px solid var(--glass-border);
-            padding: 20px; border-radius: 20px; text-align: center;
-            transition: 0.3s;
+            padding: 15px; border-radius: 15px; text-align: center;
         }
 
-        .stat-val { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; display: block; color: var(--text-pure); }
-        .stat-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; display: block; }
+        .stat-val { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; display: block; }
+        .stat-label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
-        .subject-selector { display: flex; gap: 15px; margin-bottom: 40px; }
+        .subject-selector { display: flex; gap: 10px; margin-bottom: 30px; }
 
         .sub-btn {
-            flex: 1; padding: 20px; border-radius: 15px; border: 1px solid var(--glass-border);
-            background: rgba(255,255,255,0.02); color: var(--text-dim); font-weight: 800;
-            cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-family: 'Montserrat', sans-serif; letter-spacing: 1px;
+            flex: 1; padding: 18px; border-radius: 12px; border: 1px solid var(--glass-border);
+            background: transparent; color: var(--text-dim); font-weight: 800;
+            cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif;
         }
 
-        .sub-btn.active {
-            border-color: var(--neon-mtk); color: var(--text-pure);
-            background: rgba(0, 242, 255, 0.08);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
-            transform: scale(1.02);
-        }
+        .sub-btn.active { border-color: var(--neon-mtk); color: var(--text-pure); background: rgba(0, 242, 255, 0.05); }
 
         .q-card {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
-            padding: 50px; border-radius: 30px; backdrop-filter: blur(20px);
-            min-height: 350px; position: relative;
+            padding: 40px; border-radius: 25px; backdrop-filter: blur(15px);
+            position: relative;
         }
 
-        .q-meta { color: var(--neon-mtk); font-size: 0.75rem; margin-bottom: 25px; font-weight: 700; font-family: monospace; }
-        .question-text { font-size: 1.4rem; line-height: 1.6; margin-bottom: 40px; font-weight: 400; color: #efefef; }
+        .q-meta { color: var(--text-dim); font-size: 0.75rem; margin-bottom: 20px; font-weight: 600; font-family: monospace; }
+        .question-text { font-size: 1.25rem; line-height: 1.6; margin-bottom: 35px; color: #efefef; }
 
-        .options-grid { display: grid; gap: 15px; }
+        .options-grid { display: grid; gap: 12px; }
 
         .opt {
-            padding: 22px 30px; border-radius: 18px; border: 1px solid var(--glass-border);
-            background: rgba(255,255,255,0.03); cursor: pointer; transition: 0.3s;
-            font-size: 1.1rem; color: #ccc;
+            padding: 18px 25px; border-radius: 15px; border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.01); cursor: pointer; transition: 0.2s;
+            font-size: 1rem;
         }
 
-        .opt:hover { background: rgba(255,255,255,0.07); transform: translateX(10px); border-color: rgba(255,255,255,0.2); }
-        .opt.correct { border-color: var(--accent-green) !important; background: rgba(0, 255, 136, 0.1) !important; color: var(--accent-green) !important; font-weight: 600; }
-        .opt.wrong { border-color: var(--accent-red) !important; background: rgba(255, 62, 62, 0.1) !important; color: var(--accent-red) !important; }
+        .opt:hover { background: rgba(255,255,255,0.03); transform: translateX(8px); }
+        .opt.correct { border-color: var(--accent-green) !important; background: rgba(0, 255, 136, 0.1) !important; color: var(--accent-green); }
+        .opt.wrong { border-color: var(--accent-red) !important; background: rgba(255, 62, 62, 0.1) !important; color: var(--accent-red); }
 
         .explanation {
-            margin-top: 35px; padding: 25px; border-radius: 20px;
-            background: #0a0a0c; border-left: 5px solid var(--neon-mtk);
-            display: none; font-size: 1rem; color: #aaa; line-height: 1.6;
-            animation: slideIn 0.4s ease-out;
+            margin-top: 25px; padding: 20px; border-radius: 15px;
+            background: #0a0a0c; border-left: 4px solid var(--neon-mtk);
+            display: none; font-size: 0.95rem; color: #ccc;
         }
 
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .nav-actions { margin-top: 40px; display: flex; gap: 20px; }
+        .nav-actions { margin-top: 30px; display: flex; gap: 15px; }
         .primary-btn {
-            flex: 1; padding: 22px; border-radius: 50px; border: none;
-            background: #ffffff; color: #000000; font-weight: 900;
-            cursor: pointer; text-transform: uppercase; font-size: 1rem;
-            letter-spacing: 1px; transition: 0.3s;
+            flex: 1; padding: 20px; border-radius: 50px; border: none;
+            background: #fff; color: #000; font-weight: 900;
+            cursor: pointer; text-transform: uppercase; font-size: 0.9rem;
         }
-        .primary-btn:hover { background: #cccccc; transform: translateY(-3px); }
 
-        .progress-bar-wrap { width: 100%; height: 6px; background: #111; margin-top: 60px; border-radius: 10px; overflow: hidden; }
-        .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--neon-ipa), var(--neon-mtk)); transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .progress-bar { height: 4px; width: 0%; background: var(--neon-mtk); transition: 0.5s; margin-top: 40px; }
 
-        footer { text-align: center; padding: 60px; color: #222; font-size: 0.8rem; font-weight: 900; letter-spacing: 2px; }
+        footer { text-align: center; padding: 40px; color: #222; font-size: 0.7rem; font-weight: 800; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <span class="protocol-label">Website By Gabriel Swift.</span>
-        <h1 class="main-title">ELITE<br>ACADEMY</h1>
+        <span class="protocol-label">GABRIEL SWIFT</span>
+        <h1 class="main-title">TEST<br>ACADEMY</h1>
     </header>
 
     <div class="dashboard">
-        <div class="stat-box"><span class="stat-val" id="score-val">0</span><span class="stat-label">AURA POINTS</span></div>
-        <div class="stat-box"><span class="stat-val" id="progress-val">1/50</span><span class="stat-label">SEQUENCE</span></div>
-        <div class="stat-box"><span class="stat-val" id="streak-val">0</span><span class="stat-label">STREAK</span></div>
+        <div class="stat-box"><span class="stat-val" id="score-val">0</span><span class="stat-label">Aura</span></div>
+        <div class="stat-box"><span class="stat-val" id="progress-val">1/50</span><span class="stat-label">Sequence</span></div>
+        <div class="stat-box"><span class="stat-val" id="streak-val">0</span><span class="stat-label">Streak</span></div>
     </div>
 
     <div class="subject-selector">
-        <button id="btn-ipa" class="sub-btn active" onclick="switchSubject('IPA')">SCIENCE (IPA)</button>
-        <button id="btn-mtk" class="sub-btn" onclick="switchSubject('MTK')">MATH (MTK)</button>
+        <button id="btn-ipa" class="sub-btn active" onclick="switchSubject('IPA')">IPA</button>
+        <button id="btn-mtk" class="sub-btn" onclick="switchSubject('MTK')">MTK</button>
     </div>
 
     <div class="q-card">
-        <div class="q-meta" id="q-id">INITIALIZING...</div>
-        <div class="question-text" id="q-text">Mempersiapkan data...</div>
+        <div class="q-meta" id="q-id">PROTOCOL_INITIALIZING...</div>
+        <div class="question-text" id="q-text">Mempersiapkan data stream...</div>
         <div class="options-grid" id="q-options"></div>
         <div class="explanation" id="q-explanation"></div>
     </div>
 
     <div class="nav-actions">
-        <button class="primary-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">ACCESS NEXT DATA</button>
+        <button class="primary-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Access Next Sequence</button>
     </div>
 
-    <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" id="p-bar"></div>
-    </div>
+    <div class="progress-bar" id="p-bar"></div>
 
-    <footer>The Goat Gabriel Swift.</footer>
+    <footer>QUANTUM V14.0 // GABRIEL SWIFT // 100-MASTERY-SYSTEM</footer>
 </div>
 
 <script>
-    // Database Soal Lengkap
     const database = {
         IPA: [
-            { q: "Organ pencernaan yang berfungsi menyerap air dari sisa makanan adalah...", opts: ["Usus Besar", "Usus Halus", "Lambung", "Kerongkongan"], correct: "Usus Besar", ex: "Usus besar menyerap sisa air dan membentuk feses." },
-            { q: "Sebuah benda bermassa 5 kg ditarik gaya 20 N. Percepatannya adalah...", opts: ["4 m/s²", "100 m/s²", "0.25 m/s²", "15 m/s²"], correct: "4 m/s²", ex: "Hukum Newton II: a = F/m = 20/5 = 4." },
-            { q: "Berikut adalah ciri-ciri asam, kecuali...", opts: ["Terasa licin di kulit", "Memerahkan lakmus biru", "Memiliki pH < 7", "Bereaksi dengan logam"], correct: "Terasa licin di kulit", ex: "Licin di kulit adalah ciri basa (seperti sabun)." },
-            { q: "Contoh adaptasi morfologi pada hewan adalah...", opts: ["Bentuk paruh burung", "Bunglon mengubah warna", "Cumi mengeluarkan tinta", "Paus muncul ke permukaan"], correct: "Bentuk paruh burung", ex: "Morfologi berkaitan dengan bentuk struktur tubuh luar." },
-            { q: "Gas yang menyebabkan efek rumah kaca paling dominan adalah...", opts: ["Karbon Dioksida", "Oksigen", "Nitrogen", "Helium"], correct: "Karbon Dioksida", ex: "CO2 memerangkap panas matahari di atmosfer." }
+            // Atom & Materi
+            { q: "Seorang siswa mengamati atom dengan 11 proton. Berdasarkan jumlah proton tersebut, atom tersebut termasuk...", opts: ["Natrium", "Magnesium", "Kalium", "Oksigen"], correct: "Natrium", ex: "Nomor atom 11 adalah Natrium (Na)." },
+            { q: "Dalam percobaan, suatu zat dipanaskan dan berubah warna serta menghasilkan gas. Perubahan tersebut termasuk...", opts: ["Perubahan Kimia", "Perubahan Fisika", "Perubahan Wujud", "Perubahan Mekanik"], correct: "Perubahan Kimia", ex: "Munculnya gas dan perubahan warna indikasi terbentuknya zat baru." },
+            { q: "Air laut mengandung garam dan air. Campuran ini disebut...", opts: ["Campuran Homogen", "Campuran Heterogen", "Unsur", "Senyawa"], correct: "Campuran Homogen", ex: "Larutan garam menyatu sempurna sehingga tidak terlihat batasnya." },
+            { q: "Seorang siswa mencampur gula ke dalam air hingga larut. Proses ini termasuk perubahan...", opts: ["Fisika", "Kimia", "Biologi", "Nuklir"], correct: "Fisika", ex: "Gula hanya berubah wujud menjadi larutan, sifat zatnya tetap." },
+            { q: "Logam besi dibiarkan di udara lembab dan berkarat. Peristiwa ini terjadi karena...", opts: ["Reaksi dengan Oksigen", "Reaksi dengan Nitrogen", "Kehilangan elektron", "Pendinginan mendadak"], correct: "Reaksi dengan Oksigen", ex: "Oksidasi besi menghasilkan karat (Oksida Besi)." },
+            { q: "Atom yang kehilangan elektron akan menjadi...", opts: ["Ion Positif (Kation)", "Ion Negatif (Anion)", "Netral", "Proton"], correct: "Ion Positif (Kation)", ex: "Kehilangan muatan negatif membuat atom menjadi lebih positif." },
+            { q: "Dalam sebuah atom, neutron berfungsi untuk...", opts: ["Menjaga stabilitas inti", "Membawa arus listrik", "Mengelilingi inti", "Menentukan muatan atom"], correct: "Menjaga stabilitas inti", ex: "Neutron meminimalkan tolak-menolak antar proton di inti." },
+            { q: "Seorang siswa menemukan zat yang tidak dapat diuraikan lagi secara kimia. Zat tersebut adalah...", opts: ["Unsur", "Senyawa", "Campuran", "Molekul"], correct: "Unsur", ex: "Unsur adalah bentuk paling sederhana dari materi." },
+            { q: "Garam dapur merupakan contoh...", opts: ["Senyawa", "Unsur", "Campuran Heterogen", "Logam"], correct: "Senyawa", ex: "Garam ($NaCl$) terdiri dari unsur Natrium dan Klorin." },
+            { q: "Dalam kehidupan sehari-hari, udara termasuk...", opts: ["Campuran", "Senyawa", "Unsur Murni", "Zat Padat"], correct: "Campuran", ex: "Udara terdiri dari Nitrogen, Oksigen, dan gas lainnya." },
+            
+            // Listrik
+            { q: "Andi memasang lampu di rumahnya. Ia ingin jika satu lampu mati, lampu lain tetap menyala. Maka ia harus menggunakan rangkaian...", opts: ["Paralel", "Seri", "Campuran", "Tunggal"], correct: "Paralel", ex: "Rangkaian paralel memiliki percabangan jalur listrik." },
+            { q: "Sebuah rangkaian memiliki hambatan yang sangat besar. Akibatnya arus listrik akan...", opts: ["Mengecil", "Membesar", "Tetap", "Berhenti total"], correct: "Mengecil", ex: "Hambatan (R) berbanding terbalik dengan kuat arus (I)." },
+            { q: "Budi menyentuh kabel terbuka dan merasakan sengatan. Hal ini terjadi karena adanya...", opts: ["Aliran elektron", "Medan magnet", "Gaya gravitasi", "Suhu panas"], correct: "Aliran elektron", ex: "Sengatan listrik adalah akibat arus (elektron) yang melewati tubuh." },
+            { q: "Sebuah rumah menggunakan banyak alat listrik sekaligus. Hal ini membutuhkan rangkaian...", opts: ["Paralel", "Seri", "Induksi", "Radiasi"], correct: "Paralel", ex: "Paralel memungkinkan setiap alat mendapat tegangan yang sama." },
+            { q: "Jika tegangan dinaikkan pada hambatan yang tetap, maka arus listrik akan...", opts: ["Membesar", "Mengecil", "Tetap", "Hilang"], correct: "Membesar", ex: "Tegangan (V) berbanding lurus dengan Arus (I) menurut Hukum Ohm." },
+            { q: "Dalam rangkaian seri, jika satu lampu mati atau putus maka...", opts: ["Semua lampu padam", "Lampu lain tetap nyala", "Lampu lain makin terang", "Baterai meledak"], correct: "Semua lampu padam", ex: "Karena jalur listrik terputus total." },
+            { q: "Alat untuk mengukur kuat arus listrik adalah...", opts: ["Amperemeter", "Voltmeter", "Ohmmeter", "Termometer"], correct: "Amperemeter", ex: "Dipasang secara seri dalam rangkaian." },
+            { q: "Jika hambatan pada rangkaian dibuat sangat kecil, maka arus listrik akan...", opts: ["Sangat besar", "Sangat kecil", "Nol", "Tetap"], correct: "Sangat besar", ex: "I = V/R, pembagi kecil menghasilkan hasil besar." },
+            { q: "Energi listrik diubah menjadi energi cahaya pada perangkat...", opts: ["Lampu LED", "Seterika", "Kipas Angin", "Speaker"], correct: "Lampu LED", ex: "LED mengubah elektron menjadi foton cahaya." },
+            { q: "Dalam kehidupan sehari-hari, listrik digunakan untuk...", opts: ["Sumber energi peralatan", "Membuat makanan", "Mendinginkan air laut", "Mengatur gravitasi"], correct: "Sumber energi peralatan", ex: "Energi listrik diubah menjadi energi gerak, panas, atau cahaya." },
+            
+            // Genetika
+            { q: "Seorang petani menyilangkan tanaman tinggi (T) dengan pendek (t). Semua anaknya tinggi. Hal ini menunjukkan bahwa sifat tinggi bersifat...", opts: ["Dominan", "Resesif", "Intermediet", "Mutasi"], correct: "Dominan", ex: "Sifat dominan menutupi penampakan sifat resesif." },
+            { q: "Dalam persilangan Aa × Aa, kemungkinan genotipe anak yang muncul adalah...", opts: ["AA, Aa, aa", "Hanya Aa", "AA dan aa saja", "Semua AA"], correct: "AA, Aa, aa", ex: "Rasio genotipe 1:2:1." },
+            { q: "Sifat yang tertutupi oleh sifat lain dalam genetika disebut...", opts: ["Resesif", "Dominan", "Fenotipe", "Hibrid"], correct: "Resesif", ex: "Hanya muncul jika dalam keadaan homozigot." },
+            { q: "Dalam persilangan dihibrid, jumlah sifat beda yang diamati adalah...", opts: ["Dua", "Satu", "Tiga", "Empat"], correct: "Dua", ex: "Dihibrid artinya 'dua sifat'." },
+            { q: "Jika rasio fenotipe 3:1 muncul pada keturunan F2, maka itu adalah persilangan...", opts: ["Monohibrid Dominan", "Dihibrid", "Intermediet", "Testcross"], correct: "Monohibrid Dominan", ex: "Hasil persilangan satu sifat beda dengan dominansi penuh." },
+            { q: "Seorang anak memiliki sifat yang sama dengan kedua orang tuanya. Hal ini disebabkan oleh...", opts: ["Pewarisan Gen", "Lingkungan", "Makanan", "Olahraga"], correct: "Pewarisan Gen", ex: "Gen membawa instruksi biologis dari induk." },
+            { q: "Fenotipe adalah...", opts: ["Sifat yang nampak", "Susunan genetik", "Jumlah kromosom", "Jenis sel"], correct: "Sifat yang nampak", ex: "Contoh: Tinggi badan, warna bunga." },
+            { q: "Genotipe adalah...", opts: ["Susunan genetik individu", "Warna rambut", "Tinggi badan", "Cara bicara"], correct: "Susunan genetik individu", ex: "Dilambangkan dengan huruf seperti AA atau Aa." },
+            { q: "Persilangan dihibrid heterozigot sempurna menghasilkan rasio fenotipe...", opts: ["9 : 3 : 3 : 1", "3 : 1", "1 : 2 : 1", "1 : 1"], correct: "9 : 3 : 3 : 1", ex: "Hukum Mendel II (Asortasi bebas)." },
+            { q: "Sifat dominan biasanya dilambangkan dengan...", opts: ["Huruf Kapital", "Huruf Kecil", "Angka", "Simbol Yunani"], correct: "Huruf Kapital", ex: "Contoh: 'T' untuk tinggi." },
+
+            // Ekosistem
+            { q: "Dalam sebuah padang rumput, rumput dimakan kambing lalu dimakan harimau. Rumput berperan sebagai...", opts: ["Produsen", "Konsumen I", "Konsumen II", "Pengurai"], correct: "Produsen", ex: "Tumbuhan menghasilkan energi sendiri melalui fotosintesis." },
+            { q: "Jika jumlah predator dalam suatu wilayah berkurang drastis, maka jumlah mangsa akan...", opts: ["Meningkat pesat", "Menurun", "Tetap", "Punah"], correct: "Meningkat pesat", ex: "Tidak ada yang mengontrol populasi mangsa." },
+            { q: "Bakteri dan jamur dalam tanah berfungsi sebagai...", opts: ["Pengurai (Dekomposer)", "Produsen", "Karnivora", "Parasit"], correct: "Pengurai (Dekomposer)", ex: "Menguraikan materi organik kembali ke tanah." },
+            { q: "Energi utama yang masuk ke dalam ekosistem berasal dari...", opts: ["Cahaya Matahari", "Air hujan", "Nutrisi tanah", "Oksigen"], correct: "Cahaya Matahari", ex: "Matahari adalah sumber energi primer bagi produsen." },
+            { q: "Hewan pemakan tumbuhan disebut...", opts: ["Herbivora", "Karnivora", "Omnivora", "Insektivora"], correct: "Herbivora", ex: "Contoh: Kambing, Sapi." },
+            { q: "Hubungan antara lebah yang mengambil nektar dan bunga adalah contoh...", opts: ["Mutualisme", "Parasitisme", "Komensalisme", "Predasi"], correct: "Mutualisme", ex: "Keduanya saling menguntungkan (Lebah makan, Bunga terbantu penyerbukan)." },
+            { q: "Jika jumlah tumbuhan berkurang drastis, maka rantai makanan akan...", opts: ["Terputus/Terganggu", "Makin kuat", "Tetap stabil", "Melahirkan spesies baru"], correct: "Terputus/Terganggu", ex: "Energi dasar ekosistem hilang." },
+            { q: "Konsumen tingkat dua adalah hewan yang memakan...", opts: ["Konsumen tingkat satu", "Produsen", "Pengurai", "Tumbuhan langsung"], correct: "Konsumen tingkat satu", ex: "Biasanya berupa hewan karnivora kecil atau omnivora." },
+            { q: "Rantai makanan menunjukkan...", opts: ["Aliran energi", "Siklus air", "Pertumbuhan pohon", "Jumlah populasi"], correct: "Aliran energi", ex: "Menunjukkan perpindahan energi dari satu organisme ke organisme lain." },
+            { q: "Ekosistem terdiri dari dua komponen utama, yaitu...", opts: ["Biotik dan Abiotik", "Hewan dan Tumbuhan", "Air dan Udara", "Tanah dan Batu"], correct: "Biotik dan Abiotik", ex: "Komponen makhluk hidup dan benda tak hidup." },
+
+            // Sistem Tubuh & Fisika
+            { q: "Seorang siswa berlari dan napasnya menjadi cepat. Hal ini terjadi karena tubuh membutuhkan lebih banyak...", opts: ["Oksigen", "Karbon Dioksida", "Nitrogen", "Cahaya"], correct: "Oksigen", ex: "Oksigen dibutuhkan untuk membakar energi (metabolisme)." },
+            { q: "Jantung pada manusia berfungsi untuk...", opts: ["Memompa darah", "Menyaring udara", "Mencerna lemak", "Menyimpan nutrisi"], correct: "Memompa darah", ex: "Menyebarkan oksigen dan nutrisi ke seluruh tubuh." },
+            { q: "Proses pencernaan secara mekanik pada manusia dimulai dari...", opts: ["Mulut", "Lambung", "Usus Halus", "Kerongkongan"], correct: "Mulut", ex: "Gigi menghancurkan makanan secara mekanik." },
+            { q: "Bunyi tidak dapat terdengar di ruang hampa udara karena...", opts: ["Tidak ada media rambat", "Suhunya terlalu dingin", "Terlalu gelap", "Gravitasi terlalu besar"], correct: "Tidak ada media rambat", ex: "Bunyi membutuhkan zat perantara (padat/cair/gas)." },
+            { q: "Gaya dorong yang diberikan pada meja menyebabkan meja...", opts: ["Berubah posisi/Bergerak", "Berubah warna", "Bertambah berat", "Mengecil"], correct: "Berubah posisi/Bergerak", ex: "Gaya dapat mengubah gerak benda." },
+            { q: "Sebuah bola ditendang lalu bergerak maju. Hal ini menunjukkan adanya...", opts: ["Gaya", "Energi kimia", "Gaya gravitasi saja", "Tekanan udara"], correct: "Gaya", ex: "Tendangan memberikan gaya kinetik pada bola." },
+            { q: "Energi didefinisikan sebagai kemampuan untuk...", opts: ["Melakukan usaha/kerja", "Melihat benda", "Mendengar suara", "Menghirup udara"], correct: "Melakukan usaha/kerja", ex: "Satuannya adalah Joule." },
+            { q: "Gesekan antara ban kendaraan dan permukaan jalan menyebabkan...", opts: ["Ban menjadi panas dan aus", "Kendaraan makin cepat", "Bensin makin penuh", "Ban makin dingin"], correct: "Ban menjadi panas dan aus", ex: "Gaya gesek menghasilkan panas." },
+            { q: "Planet terbesar dalam sistem tata surya kita adalah...", opts: ["Jupiter", "Saturnus", "Bumi", "Neptunus"], correct: "Jupiter", ex: "Ukurannya jauh melebihi planet lain." },
+            { q: "Matahari merupakan sumber energi terbesar berupa...", opts: ["Panas dan Cahaya", "Bunyi dan Listrik", "Angin dan Air", "Kimia dan Nuklir"], correct: "Panas dan Cahaya", ex: "Radiasi matahari adalah penggerak kehidupan di Bumi." }
         ],
         MTK: [
-            { q: "Bentuk sederhana dari $2(3x - 4) + 5$ adalah...", opts: ["$6x - 3$", "$6x + 9$", "$6x - 13$", "$5x - 3$"], correct: "$6x - 3$", ex: "2*3x - 2*4 + 5 = 6x - 8 + 5 = 6x - 3." },
-            { q: "Himpunan penyelesaian dari $2x + 5 = 13$ adalah...", opts: ["4", "8", "9", "6"], correct: "4", ex: "2x = 13 - 5 -> 2x = 8 -> x = 4." },
-            { q: "Sebuah tabung memiliki jari-jari 10 cm dan tinggi 20 cm. Volumenya adalah...", opts: ["6.280 cm³", "3.140 cm³", "1.256 cm³", "4.400 cm³"], correct: "6.280 cm³", ex: "V = π.r².t = 3.14 * 100 * 20 = 6280." },
-            { q: "Nilai dari $\\sqrt{144} + \\sqrt{169}$ adalah...", opts: ["25", "23", "27", "29"], correct: "25", ex: "12 + 13 = 25." },
-            { q: "Dua garis dikatakan sejajar jika...", opts: ["Gradiennya sama", "Berpotongan di satu titik", "Hasil kali gradien = -1", "Saling tegak lurus"], correct: "Gradiennya sama", ex: "Garis sejajar memiliki kemiringan (m) yang identik." }
-        ]
-    };
-
-    // Generator 50 soal otomatis (placeholder)
-    ['IPA', 'MTK'].forEach(sub => {
-        for(let i = database[sub].length; i < 50; i++) {
-            database[sub].push({
-                q: `[${sub}_PRO_LEVEL] Soal analisis data ke-${i+1}. Tentukan variabel yang paling optimal untuk menyelesaikan sistem ini.`,
-                opts: ["Variabel Alpha", "Variabel Beta", "Variabel Gamma", "Variabel Delta"],
-                correct: "Variabel Alpha",
-                ex: "Lakukan eliminasi pada opsi yang tidak memiliki korelasi linear dengan sistem."
-            });
-        }
-    });
-
-    let currentSub = 'IPA';
-    let curIdx = 0;
-    let score = 0;
-    let streak = 0;
-
-    // Fisher-Yates Shuffle untuk mengacak jawaban
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-
-    function switchSubject(s) {
-        currentSub = s; curIdx = 0;
-        document.getElementById('btn-ipa').classList.toggle('active', s === 'IPA');
-        document.getElementById('btn-mtk').classList.toggle('active', s === 'MTK');
-        render();
-    }
-
-    function render() {
-        const item = database[currentSub][curIdx];
-        document.getElementById('q-id').innerText = `NODE_ID // ${currentSub}_PROTOCOL_0${curIdx+1}`;
-        document.getElementById('q-text').innerHTML = item.q;
-        document.getElementById('progress-val').innerText = `${curIdx+1}/50`;
-        document.getElementById('p-bar').style.width = `${((curIdx+1)/50)*100}%`;
-
-        // Acak jawaban setiap render
-        const shuffledOptions = shuffleArray([...item.opts]);
-        
-        const optContainer = document.getElementById('q-options');
-        optContainer.innerHTML = '';
-        
-        shuffledOptions.forEach(text => {
-            const div = document.createElement('div');
-            div.className = 'opt';
-            div.innerHTML = text;
-            div.onclick = () => validate(div, text, item.correct);
-            optContainer.appendChild(div);
-        });
-
-        document.getElementById('q-explanation').style.display = 'none';
-        document.getElementById('next-btn').style.display = 'none';
-        if (window.MathJax) MathJax.typeset();
-    }
-
-    function validate(el, selected, correct) {
-        const allOpts = document.querySelectorAll('.opt');
-        allOpts.forEach(o => o.style.pointerEvents = 'none');
-
-        if(selected === correct) {
-            el.classList.add('correct');
-            score += 200;
-            streak++;
-        } else {
-            el.classList.add('wrong');
-            allOpts.forEach(o => { if(o.innerHTML === correct) o.classList.add('correct'); });
-            streak = 0;
-        }
-
-        document.getElementById('score-val').innerText = score;
-        document.getElementById('streak-val').innerText = streak;
-        
-        const exp = document.getElementById('q-explanation');
-        exp.innerHTML = `<strong>LOG_ANALYSIS:</strong> ${database[currentSub][curIdx].ex}`;
-        exp.style.display = 'block';
-        document.getElementById('next-btn').style.display = 'block';
-    }
-
-    function nextQuestion() {
-        if(curIdx < 49) {
-            curIdx++;
-            render();
-        } else {
-            alert(`DATA UPLOAD COMPLETE. Final Aura: ${score}. Anda telah menguasai protokol ini.`);
-        }
-    }
-
-    window.onload = render;
-</script>
-</body>
-</html>
-
+            // Koordinat
+            { q: "Titik A(3, 4) dicerminkan terhadap sumbu X. Di mana posisi bayangannya?", opts: ["(3, -4)", "(-3, 4)", "(-3, -4)", "(4, 3)"], correct: "(3, -4)", ex: "Refleksi sumbu X mengubah tanda Y." },
+            { q: "Seorang siswa menggambar titik (-2, 5). Jika dicerminkan ke sumbu Y, hasilnya...", opts: ["(2, 5)", "(-2, -5)", "(2, -1)", "(5, -2)"], correct: "(2, 5)", ex: "Refleksi sumbu Y mengubah tanda X." },
+            { q: "Titik (2, 3) digeser (translasi) 3 ke kanan dan 2 ke atas. Koordinat baru adalah...", opts: ["(5, 5)", "(6, 5)", "(5, 1)", "(1, 1)"], correct: "(5, 5)", ex: "(2+3, 3+2) = (5, 5)." },
+            { q: "Titik (-3, -4) berada di kuadran...", opts: ["III", "I", "II", "IV"], correct: "III", ex: "Kuadran III adalah tempat X negatif dan Y negatif." },
+            { q: "Titik (4, -2) berada di kuadran...", opts: ["IV", "I", "II", "III"], correct: "IV", ex: "X positif, Y negatif." },
+            { q: "Bayangan titik (5, 6) terhadap sumbu Y adalah...", opts: ["(-5, 6)", "(5, -6)", "(-5, -6)", "(0, 6)"], correct: "(-5, 6)", ex: "X menjadi negatif." },
+            { q: "Jika suatu titik berada di kuadran I, maka tanda koordinatnya adalah...", opts: ["(+, +)", "(-, +)", "(-, -)", "(+, -)"], correct: "(+, +)", ex: 
