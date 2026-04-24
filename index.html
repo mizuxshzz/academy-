@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Swift's Test</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root {
+            --bg-obsidian: #000000;
+            --bg-deep-card: #0a0a0c;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --neon-mtk: #00f2ff;
+            --neon-ipa: #7000ff;
+            --text-pure: #ffffff;
+            --text-dim: #888888;
+            --accent-green: #00ff88;
+            --accent-red: #ff3e3e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-obsidian);
+            background-image: 
+                radial-gradient(circle at 5% 5%, rgba(112, 0, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 95% 95%, rgba(0, 242, 255, 0.1) 0%, transparent 30%);
+            color: var(--text-pure);
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+
+        header {
+            text-align: center; padding: 60px 0;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 40px;
+        }
+
+        .protocol-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem; letter-spacing: 5px;
+            color: var(--neon-mtk); text-transform: uppercase;
+            margin-bottom: 15px; display: block;
+            opacity: 0.8;
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif; font-size: 4rem;
+            margin: 0; line-height: 0.9; letter-spacing: -3px;
+            background: linear-gradient(to bottom, #ffffff 30%, #444444 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .dashboard {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 20px; margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: var(--bg-deep-card); border: 1px solid var(--glass-border);
+            padding: 20px; border-radius: 20px; text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-val { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; display: block; color: var(--text-pure); }
+        .stat-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; display: block; }
+
+        .subject-selector { display: flex; gap: 15px; margin-bottom: 40px; }
+
+        .sub-btn {
+            flex: 1; padding: 20px; border-radius: 15px; border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.02); color: var(--text-dim); font-weight: 800;
+            cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Montserrat', sans-serif; letter-spacing: 1px;
+        }
+
+        .sub-btn.active {
+            border-color: var(--neon-mtk); color: var(--text-pure);
+            background: rgba(0, 242, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+            transform: scale(1.02);
+        }
+
+        .q-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            padding: 50px; border-radius: 30px; backdrop-filter: blur(20px);
+            min-height: 350px; position: relative;
+        }
+
+        .q-meta { color: var(--neon-mtk); font-size: 0.75rem; margin-bottom: 25px; font-weight: 700; font-family: monospace; }
+        .question-text { font-size: 1.4rem; line-height: 1.6; margin-bottom: 40px; font-weight: 400; color: #efefef; }
+
+        .options-grid { display: grid; gap: 15px; }
+
+        .opt {
+            padding: 22px 30px; border-radius: 18px; border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.03); cursor: pointer; transition: 0.3s;
+            font-size: 1.1rem; color: #ccc;
+        }
+
+        .opt:hover { background: rgba(255,255,255,0.07); transform: translateX(10px); border-color: rgba(255,255,255,0.2); }
+        .opt.correct { border-color: var(--accent-green) !important; background: rgba(0, 255, 136, 0.1) !important; color: var(--accent-green) !important; font-weight: 600; }
+        .opt.wrong { border-color: var(--accent-red) !important; background: rgba(255, 62, 62, 0.1) !important; color: var(--accent-red) !important; }
+
+        .explanation {
+            margin-top: 35px; padding: 25px; border-radius: 20px;
+            background: #0a0a0c; border-left: 5px solid var(--neon-mtk);
+            display: none; font-size: 1rem; color: #aaa; line-height: 1.6;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .nav-actions { margin-top: 40px; display: flex; gap: 20px; }
+        .primary-btn {
+            flex: 1; padding: 22px; border-radius: 50px; border: none;
+            background: #ffffff; color: #000000; font-weight: 900;
+            cursor: pointer; text-transform: uppercase; font-size: 1rem;
+            letter-spacing: 1px; transition: 0.3s;
+        }
+        .primary-btn:hover { background: #cccccc; transform: translateY(-3px); }
+
+        .progress-bar-wrap { width: 100%; height: 6px; background: #111; margin-top: 60px; border-radius: 10px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--neon-ipa), var(--neon-mtk)); transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        footer { text-align: center; padding: 60px; color: #222; font-size: 0.8rem; font-weight: 900; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="protocol-label">Website By Gabriel Swift.</span>
+        <h1 class="main-title">ELITE<br>ACADEMY</h1>
+    </header>
+
+    <div class="dashboard">
+        <div class="stat-box"><span class="stat-val" id="score-val">0</span><span class="stat-label">AURA POINTS</span></div>
+        <div class="stat-box"><span class="stat-val" id="progress-val">1/50</span><span class="stat-label">SEQUENCE</span></div>
+        <div class="stat-box"><span class="stat-val" id="streak-val">0</span><span class="stat-label">STREAK</span></div>
+    </div>
+
+    <div class="subject-selector">
+        <button id="btn-ipa" class="sub-btn active" onclick="switchSubject('IPA')">SCIENCE (IPA)</button>
+        <button id="btn-mtk" class="sub-btn" onclick="switchSubject('MTK')">MATH (MTK)</button>
+    </div>
+
+    <div class="q-card">
+        <div class="q-meta" id="q-id">INITIALIZING...</div>
+        <div class="question-text" id="q-text">Mempersiapkan data...</div>
+        <div class="options-grid" id="q-options"></div>
+        <div class="explanation" id="q-explanation"></div>
+    </div>
+
+    <div class="nav-actions">
+        <button class="primary-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">ACCESS NEXT DATA</button>
+    </div>
+
+    <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="p-bar"></div>
+    </div>
+
+    <footer>The Goat Gabriel Swift.</footer>
+</div>
+
+<script>
+    // Database Soal Lengkap
+    const database = {
+        IPA: [
+            { q: "Organ pencernaan yang berfungsi menyerap air dari sisa makanan adalah...", opts: ["Usus Besar", "Usus Halus", "Lambung", "Kerongkongan"], correct: "Usus Besar", ex: "Usus besar menyerap sisa air dan membentuk feses." },
+            { q: "Sebuah benda bermassa 5 kg ditarik gaya 20 N. Percepatannya adalah...", opts: ["4 m/s²", "100 m/s²", "0.25 m/s²", "15 m/s²"], correct: "4 m/s²", ex: "Hukum Newton II: a = F/m = 20/5 = 4." },
+            { q: "Berikut adalah ciri-ciri asam, kecuali...", opts: ["Terasa licin di kulit", "Memerahkan lakmus biru", "Memiliki pH < 7", "Bereaksi dengan logam"], correct: "Terasa licin di kulit", ex: "Licin di kulit adalah ciri basa (seperti sabun)." },
+            { q: "Contoh adaptasi morfologi pada hewan adalah...", opts: ["Bentuk paruh burung", "Bunglon mengubah warna", "Cumi mengeluarkan tinta", "Paus muncul ke permukaan"], correct: "Bentuk paruh burung", ex: "Morfologi berkaitan dengan bentuk struktur tubuh luar." },
+            { q: "Gas yang menyebabkan efek rumah kaca paling dominan adalah...", opts: ["Karbon Dioksida", "Oksigen", "Nitrogen", "Helium"], correct: "Karbon Dioksida", ex: "CO2 memerangkap panas matahari di atmosfer." }
+        ],
+        MTK: [
+            { q: "Bentuk sederhana dari $2(3x - 4) + 5$ adalah...", opts: ["$6x - 3$", "$6x + 9$", "$6x - 13$", "$5x - 3$"], correct: "$6x - 3$", ex: "2*3x - 2*4 + 5 = 6x - 8 + 5 = 6x - 3." },
+            { q: "Himpunan penyelesaian dari $2x + 5 = 13$ adalah...", opts: ["4", "8", "9", "6"], correct: "4", ex: "2x = 13 - 5 -> 2x = 8 -> x = 4." },
+            { q: "Sebuah tabung memiliki jari-jari 10 cm dan tinggi 20 cm. Volumenya adalah...", opts: ["6.280 cm³", "3.140 cm³", "1.256 cm³", "4.400 cm³"], correct: "6.280 cm³", ex: "V = π.r².t = 3.14 * 100 * 20 = 6280." },
+            { q: "Nilai dari $\\sqrt{144} + \\sqrt{169}$ adalah...", opts: ["25", "23", "27", "29"], correct: "25", ex: "12 + 13 = 25." },
+            { q: "Dua garis dikatakan sejajar jika...", opts: ["Gradiennya sama", "Berpotongan di satu titik", "Hasil kali gradien = -1", "Saling tegak lurus"], correct: "Gradiennya sama", ex: "Garis sejajar memiliki kemiringan (m) yang identik." }
+        ]
+    };
+
+    // Generator 50 soal otomatis (placeholder)
+    ['IPA', 'MTK'].forEach(sub => {
+        for(let i = database[sub].length; i < 50; i++) {
+            database[sub].push({
+                q: `[${sub}_PRO_LEVEL] Soal analisis data ke-${i+1}. Tentukan variabel yang paling optimal untuk menyelesaikan sistem ini.`,
+                opts: ["Variabel Alpha", "Variabel Beta", "Variabel Gamma", "Variabel Delta"],
+                correct: "Variabel Alpha",
+                ex: "Lakukan eliminasi pada opsi yang tidak memiliki korelasi linear dengan sistem."
+            });
+        }
+    });
+
+    let currentSub = 'IPA';
+    let curIdx = 0;
+    let score = 0;
+    let streak = 0;
+
+    // Fisher-Yates Shuffle untuk mengacak jawaban
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function switchSubject(s) {
+        currentSub = s; curIdx = 0;
+        document.getElementById('btn-ipa').classList.toggle('active', s === 'IPA');
+        document.getElementById('btn-mtk').classList.toggle('active', s === 'MTK');
+        render();
+    }
+
+    function render() {
+        const item = database[currentSub][curIdx];
+        document.getElementById('q-id').innerText = `NODE_ID // ${currentSub}_PROTOCOL_0${curIdx+1}`;
+        document.getElementById('q-text').innerHTML = item.q;
+        document.getElementById('progress-val').innerText = `${curIdx+1}/50`;
+        document.getElementById('p-bar').style.width = `${((curIdx+1)/50)*100}%`;
+
+        // Acak jawaban setiap render
+        const shuffledOptions = shuffleArray([...item.opts]);
+        
+        const optContainer = document.getElementById('q-options');
+        optContainer.innerHTML = '';
+        
+        shuffledOptions.forEach(text => {
+            const div = document.createElement('div');
+            div.className = 'opt';
+            div.innerHTML = text;
+            div.onclick = () => validate(div, text, item.correct);
+            optContainer.appendChild(div);
+        });
+
+        document.getElementById('q-explanation').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+        if (window.MathJax) MathJax.typeset();
+    }
+
+    function validate(el, selected, correct) {
+        const allOpts = document.querySelectorAll('.opt');
+        allOpts.forEach(o => o.style.pointerEvents = 'none');
+
+        if(selected === correct) {
+            el.classList.add('correct');
+            score += 200;
+            streak++;
+        } else {
+            el.classList.add('wrong');
+            allOpts.forEach(o => { if(o.innerHTML === correct) o.classList.add('correct'); });
+            streak = 0;
+        }
+
+        document.getElementById('score-val').innerText = score;
+        document.getElementById('streak-val').innerText = streak;
+        
+        const exp = document.getElementById('q-explanation');
+        exp.innerHTML = `<strong>LOG_ANALYSIS:</strong> ${database[currentSub][curIdx].ex}`;
+        exp.style.display = 'block';
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        if(curIdx < 49) {
+            curIdx++;
+            render();
+        } else {
+            alert(`DATA UPLOAD COMPLETE. Final Aura: ${score}. Anda telah menguasai protokol ini.`);
+        }
+    }
+
+    window.onload = render;
+</script>
+</body>
+</html>
+
